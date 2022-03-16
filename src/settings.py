@@ -91,7 +91,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
+DATABASES['default'] = dj_database_url.config(
+    default="postgres://xeqyntcbdewhcp:c2b9ae3a949ff9535e5baca1b88ad4e987a4ea84f145079dd7a615260fe29390@ec2-54-87-34-201.compute-1.amazonaws.com:5432/dckoai7uj2qop9")
 
 DATETIME_FORMAT = "%Y-%m-%d%H:%M:%S"
 
