@@ -8,7 +8,7 @@ from rest_framework.generics import (CreateAPIView, ListAPIView,
                                      RetrieveDestroyAPIView,
                                      RetrieveUpdateDestroyAPIView)
 from rest_framework.permissions import (IsAuthenticated,
-                                        IsAuthenticatedOrReadOnly)
+                                        IsAuthenticatedOrReadOnly, AllowAny)
 from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST)
@@ -42,7 +42,7 @@ class EspecialityDetailView(RetrieveUpdateDestroyAPIView):
 
 
 class DoctorListView(ListCreateAPIView):
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (AllowAny, )
     queryset = Doctor.objects.filter(is_active=True)
     serializer_class = DoctorSerialiazer
     filter_backends = (
@@ -51,7 +51,6 @@ class DoctorListView(ListCreateAPIView):
     )
     filterset_fields = {
         "user": ['exact'],
-        "user__username": ['exact'],
         "user__email": ['exact'],
         "user__first_name": ['exact'],
         "user__last_name": ['exact'],
@@ -59,7 +58,6 @@ class DoctorListView(ListCreateAPIView):
         "especiality__name": ['exact'],
     }
     search_fields = [
-        "$user__username",
         "$user__first_name",
         "$user__last_name",
         "$especiality__name",
@@ -73,7 +71,7 @@ class DoctorDetailView(RetrieveUpdateDestroyAPIView):
 
 
 class PatientListView(ListCreateAPIView):
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (AllowAny, )
     queryset = Patient.objects.filter(is_active=True)
     serializer_class = PatientSerialiazer
     filter_backends = (
@@ -82,13 +80,11 @@ class PatientListView(ListCreateAPIView):
     )
     filterset_fields = {
         "user": ['exact'],
-        "user__username": ['exact'],
         "user__email": ['exact'],
         "user__first_name": ['exact'],
         "user__last_name": ['exact'],
     }
     search_fields = [
-        "$user__username",
         "$user__first_name",
         "$user__last_name",
     ]
@@ -109,7 +105,6 @@ class AppointmentListView(ListCreateAPIView):
         SearchFilter
     )
     filterset_fields = {
-        "user__username": ['exact'],
         "user__email": ['exact'],
         "user__first_name": ['exact'],
         "user__last_name": ['exact'],
@@ -118,10 +113,8 @@ class AppointmentListView(ListCreateAPIView):
     }
     search_fields = [
         "$motive",
-        "$doctor__user__username",
         "$doctor__user__first_name",
         "$doctor__user__last_name",
-        "$patient__user__username",
         "$patient__user__first_name",
         "$patient__user__last_name",
     ]
