@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from .models import Appointment, Doctor, Especiality, Patient
 from authentication.serializers import UserSerializer
-from django.contrib.auth.models import User
+from authentication.models import User
 
 
 class EspecialitySerialiazer(serializers.ModelSerializer):

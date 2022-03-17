@@ -6,5 +6,4 @@ urlpatterns = [
     re_path(r'^login/', LoginAPIView.as_view(), name='user-login'),
     path('signup/', SignUpAPIView.as_view(), name='user-login'),
     path('users/', UserListView.as_view(), name='user-login'),
-
 ]
