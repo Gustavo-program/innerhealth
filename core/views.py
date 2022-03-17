@@ -52,14 +52,14 @@ class DoctorListView(ListCreateAPIView):
     filterset_fields = {
         "user": ['exact'],
         "user__email": ['exact'],
-        "user__first_name": ['exact'],
-        "user__last_name": ['exact'],
+        "first_name": ['exact'],
+        "last_name": ['exact'],
         "especiality": ['exact'],
         "especiality__name": ['exact'],
     }
     search_fields = [
-        "$user__first_name",
-        "$user__last_name",
+        "$first_name",
+        "$last_name",
         "$especiality__name",
     ]
 
@@ -81,12 +81,12 @@ class PatientListView(ListCreateAPIView):
     filterset_fields = {
         "user": ['exact'],
         "user__email": ['exact'],
-        "user__first_name": ['exact'],
-        "user__last_name": ['exact'],
+        "first_name": ['exact'],
+        "last_name": ['exact'],
     }
     search_fields = [
-        "$user__first_name",
-        "$user__last_name",
+        "$first_name",
+        "$last_name",
     ]
 
 
@@ -105,18 +105,23 @@ class AppointmentListView(ListCreateAPIView):
         SearchFilter
     )
     filterset_fields = {
-        "user__email": ['exact'],
-        "user__first_name": ['exact'],
-        "user__last_name": ['exact'],
+        "doctor": ['exact'],
+        "doctor__user": ['exact'],
+        "doctor__first_name": ['exact'],
+        "doctor__last_name": ['exact'],
+        "patient": ['exact'],
+        "patient__user": ['exact'],
+        "patient__first_name": ['exact'],
+        "patient__last_name": ['exact'],
         "state": ['exact'],
         "due_date": ['exact', 'gt', 'lt', 'gte', 'lte'],
     }
     search_fields = [
         "$motive",
-        "$doctor__user__first_name",
-        "$doctor__user__last_name",
-        "$patient__user__first_name",
-        "$patient__user__last_name",
+        "$doctor__first_name",
+        "$doctor__last_name",
+        "$patient__first_name",
+        "$patient__last_name",
     ]
 
     def post(self, request, *args, **kwargs):

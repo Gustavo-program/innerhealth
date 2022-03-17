@@ -59,8 +59,6 @@ class LoginAPIView(APIView):
 
         user_data = {
             "user_id": user.id,
-            "first_name": user.first_name,
-            "last_name": user.last_name,
             "email": user.email,
             "token": token.key,
             "is_staff": user.is_staff,
@@ -80,10 +78,7 @@ class SignUpAPIView(APIView):
     METHOD POST.
     Body.
     {
-        "username": "",
         "password": "",
-        "first_name": "",
-        "last_name": "",
         "email": "",
     }
     """

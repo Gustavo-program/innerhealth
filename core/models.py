@@ -27,6 +27,14 @@ class Patient(InnerHealthAbstractClass):
         on_delete=models.CASCADE,
         verbose_name=("User")
     )
+    first_name = models.CharField(
+        max_length=155,
+        verbose_name="First Name"
+    )
+    last_name = models.CharField(
+        max_length=155,
+        verbose_name="Last Name"
+    )
     phone = models.CharField(
         max_length=100,
         blank=True,
@@ -35,7 +43,7 @@ class Patient(InnerHealthAbstractClass):
     )
 
     def __str__(self):
-        return self.user.first_name
+        return self.first_name
 
 
 class Doctor(InnerHealthAbstractClass):
@@ -55,6 +63,14 @@ class Doctor(InnerHealthAbstractClass):
         null=True,
         verbose_name=("Especiality")
     )
+    first_name = models.CharField(
+        max_length=155,
+        verbose_name="First Name"
+    )
+    last_name = models.CharField(
+        max_length=155,
+        verbose_name="Last Name"
+    )
     phone = models.CharField(
         max_length=100,
         blank=True,
@@ -63,7 +79,7 @@ class Doctor(InnerHealthAbstractClass):
     )
 
     def __str__(self):
-        return self.user.first_name
+        return self.first_name
 
 
 class Appointment(InnerHealthAbstractClass):
@@ -101,7 +117,7 @@ class Appointment(InnerHealthAbstractClass):
     )
 
     def __str__(self):
-        return f"Doctor: {self.doctor.user.first_name} Patient: {self.patient.user.username}"
+        return f"Doctor: {self.doctor.first_name} Patient: {self.patient.first_name}"
 
     def save(self, *args, **kwargs):
         existent_appointment = self.__class__.objects.filter(
