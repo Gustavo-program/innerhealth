@@ -29,10 +29,12 @@ class Patient(InnerHealthAbstractClass):
     )
     first_name = models.CharField(
         max_length=155,
+        default='',
         verbose_name="First Name"
     )
     last_name = models.CharField(
         max_length=155,
+        default='',
         verbose_name="Last Name"
     )
     phone = models.CharField(
@@ -65,10 +67,12 @@ class Doctor(InnerHealthAbstractClass):
     )
     first_name = models.CharField(
         max_length=155,
+        default='',
         verbose_name="First Name"
     )
     last_name = models.CharField(
         max_length=155,
+        default='',
         verbose_name="Last Name"
     )
     phone = models.CharField(

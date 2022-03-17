@@ -29,6 +29,8 @@ class DoctorSerialiazer(serializers.ModelSerializer):
             'user',
             'especiality',
             'especiality_id',
+            'first_name',
+            'last_name',
             'phone',
             'user_rol'
         )
@@ -63,6 +65,8 @@ class PatientSerialiazer(serializers.ModelSerializer):
             'pk',
             'user',
             'phone',
+            'first_name',
+            'last_name',
             'user_rol'
         )
 
