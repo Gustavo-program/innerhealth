@@ -4,7 +4,7 @@ from django.db import models
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None):
+    def create_user(self, email, password=None, is_staff=False, is_superuser=False):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -15,7 +15,8 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
         )
-
+        user.is_staff = is_staff
+        user.is_superuser = is_superuser
         user.set_password(password)
         user.save(using=self._db)
         return user
