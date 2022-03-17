@@ -45,7 +45,7 @@ class LoginAPIView(APIView):
             return Response({"detail": "No se proporciono una contrasenha de usuario"},
                             HTTP_400_BAD_REQUEST)
 
-        user = authenticate(email=email, password=password)
+        user = authenticate(username=email, password=password)
 
         if not user:
             return Response({"detail": "Se proporcionaron credenciales invalidas"},
