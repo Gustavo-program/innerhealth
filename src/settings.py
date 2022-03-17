@@ -17,7 +17,6 @@ SECRET_KEY = 'django-insecure-@p+fv!_v0#*qyngn0)5!ho@m68=(!ajy-mup1)ww%j05j^0rcg
 DEBUG = True
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = 'authentication.User'
 
 
 # Application definition
@@ -138,4 +137,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'authentication.User'
+
 django_heroku.settings(locals())
